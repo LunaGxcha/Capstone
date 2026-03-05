@@ -442,7 +442,7 @@ export default function TeacherHomePage() {
 
       {/* Create Pass Dialog */}
       <Dialog open={passDialogOpen} onOpenChange={setPassDialogOpen}>
-        <DialogContent className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300">
+        <DialogContent className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 max-h-[85vh] flex flex-col">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-purple-900">
               Create Pass - {selectedDestination?.icon} {selectedDestination?.name}
@@ -451,7 +451,7 @@ export default function TeacherHomePage() {
               Select a student and optionally a classroom to create a pass.
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-4 mt-4">
+          <div className="space-y-4 mt-4 overflow-y-auto pr-2">
             {/* Student Selection */}
             <div>
               <label className="block text-sm font-medium text-purple-900 mb-2">
@@ -597,27 +597,29 @@ export default function TeacherHomePage() {
               </div>
             )}
 
-            <div className="flex gap-2 pt-4">
-              <Button
-                onClick={handleCreatePass}
-                disabled={!selectedStudent || (selectedDestination?.needsLocation && !selectedClassroom)}
-                className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white disabled:opacity-50"
-              >
-                Create Pass
-              </Button>
-              <Button
-                onClick={() => {
-                  setPassDialogOpen(false);
-                  setSelectedDestination(null);
-                  setSelectedStudent('');
-                  setSelectedClassroom('');
-                }}
-                variant="outline"
-                className="border-2 border-purple-300"
-              >
-                Cancel
-              </Button>
-            </div>
+          </div>
+          
+          {/* Buttons - sticky at bottom */}
+          <div className="flex gap-2 pt-4 mt-4 border-t border-purple-200">
+            <Button
+              onClick={handleCreatePass}
+              disabled={!selectedStudent || (selectedDestination?.needsLocation && !selectedClassroom)}
+              className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white disabled:opacity-50"
+            >
+              Create Pass
+            </Button>
+            <Button
+              onClick={() => {
+                setPassDialogOpen(false);
+                setSelectedDestination(null);
+                setSelectedStudent('');
+                setSelectedClassroom('');
+              }}
+              variant="outline"
+              className="border-2 border-purple-300"
+            >
+              Cancel
+            </Button>
           </div>
         </DialogContent>
       </Dialog>
