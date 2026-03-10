@@ -97,8 +97,12 @@ npm install
 npm run dev
 ```
 
-### To Deploy:
-Just push to GitHub and connect to Vercel. It handles everything automatically!
+### Deployment Notes:
+
+This project was built specifically for presentation via **Figma Make + GitHub**, not for production deployment. If you want to deploy it to a hosting service:
+
+- The app is completely frontend-based with localStorage
+- Works on Vercel, Netlify, GitHub Pages, etc.
 
 ## Known Issues
 
